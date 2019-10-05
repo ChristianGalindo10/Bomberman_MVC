@@ -3,6 +3,7 @@ package Presentacion;
 import java.awt.Canvas;
 import java.io.IOException;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class VistaStart extends javax.swing.JFrame {
 
@@ -69,4 +70,9 @@ public class VistaStart extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas Lienzo;
     // End of variables declaration//GEN-END:variables
+
+
+    
+    
 }
+
