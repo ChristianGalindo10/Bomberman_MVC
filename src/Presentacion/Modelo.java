@@ -1,8 +1,10 @@
 package Presentacion;
 
+import Logica.Bomba;
 import Logica.Imagenes;
 import Logica.Mapa;
 import Logica.Player;
+import Logica.Tipos;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -28,7 +30,7 @@ public class Modelo implements Runnable {
     private Imagenes imagenes;
 
     public Modelo() {
-        player = new Player();
+        player = Player.getSingletonInstance();
         corriendo = true;
         contador = 0;
         dobleBuffer = new BufferedImage(getVentanaJuego().getLienzo().getWidth(), getVentanaJuego().getLienzo().getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -47,7 +49,7 @@ public class Modelo implements Runnable {
             case 1:
                 getVentana().setVisible(true);
                 getVentana().setLocationRelativeTo(null);
-                Mapa mimapa = new Mapa();
+                Mapa mimapa = Mapa.getSingletonInstance();
                 dmapa = mimapa.getMapa();
                 break;
             case 2:
@@ -116,9 +118,12 @@ public class Modelo implements Runnable {
                 }
             }
         }
-        lapiz.drawImage(player.getImagen(), 40, 40, lienzo);
+        lapiz.drawImage(player.getImagen(), player.getX(), player.getY(), lienzo);
+        lapiz.drawRect(player.getX(), player.getY() + 10, 32, 30);
+        for (Bomba bomba : player.getBombas()) {
+            lapiz.drawImage(bomba.getImagen(), bomba.getX(), bomba.getY(), lienzo);
+        }
     }
-
 
     public VistaAyuda getVentanaAyuda() {
         if (ventanaAyuda == null) {
@@ -152,21 +157,33 @@ public class Modelo implements Runnable {
             Cargarmapa();
         }
     }
-    
-    public void movR(){
+
+    public void movR() {
+        player.setDireccion(Tipos.Movimiento.RIGHT);
         player.cycleRight();
     }
-    
-    public void movI(){
+
+    public void movI() {
+        player.setDireccion(Tipos.Movimiento.LEFT);
         player.cycleLeft();
     }
-    
-    public void movU(){
+
+    public void movU() {
+        player.setDireccion(Tipos.Movimiento.UP);
         player.cycleUp();
     }
-    
-    public void movD(){
+
+    public void movD() {
+        player.setDireccion(Tipos.Movimiento.DOWN);
         player.cycleDown();
+    }
+
+    public void stop() {
+        player.Stop();
+    }
+
+    public void plantBomb() {
+        player.plantBomb();
     }
 
 }
