@@ -102,4 +102,31 @@ public class Mapa {
         }
         return mapa2;
     }
+    
+    /*
+    public int brickAtPosition(Posicion pos) {
+        int x = pos.getxPos();
+        int y = pos.getyPos();
+        x= round(x);
+        y=round(y);
+        System.out.println("Rounderd off: " + x + " " + y);
+        for (int i = 0; i < mapa.length; i++) {
+            for (int j = 0; j < mapa.length; j++) {
+                if (position[i][j].getxPos() == x && position[i][j].getyPos() == y) {
+                    return intMap[i][j];
+                }
+            }
+        }
+        return 99;
+    }*/
+    
+     public int round(int x) {
+        for (int i = 0; i < 1000; i = i + 50) {
+            if (x < i) {
+                x = i - 50;
+                break;
+            }
+        }
+        return x;
+    }
 }

@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Player {
 
     ArrayList<Bomba> bombas = new ArrayList<Bomba>();
-    int totalBombas = 1;
+    int totalBombas = 5;
     private Imagenes Img;
     private ImageIcon[] UP_IMAGES;
     private ImageIcon[] DOWN_IMAGES;
@@ -22,7 +22,7 @@ public class Player {
     private Movimiento direccion = Movimiento.STOP;
     private int estado = 0;
     private Image imagen;
-    private evaluarMov evaluar;
+    private EvaluarMov evaluar;
     private final int playerHeight = 64;
     private final int playerWidth = 32;
     private static Player player;
@@ -38,14 +38,12 @@ public class Player {
     public int getY() {
         return y;
     }
-    
-    
 
     private Player() {
         vivo = true;
         moviendo = true;
         Img = new Imagenes();
-        evaluar = new evaluarMov();
+        evaluar = new EvaluarMov();
         Img.crearImagenes();
         UP_IMAGES = Img.getUP_IMAGES();
         DOWN_IMAGES = Img.getDOWN_IMAGES();
@@ -75,39 +73,54 @@ public class Player {
     public void cycleRight() {
         switch (estado) {
             case 0:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(RIGHT_IMAGES[1].getImage());
-                estado = 1;
-                x = x + 2;
+                if (moviendo) {
+                    setImage(RIGHT_IMAGES[1].getImage());
+                    estado = 1;
+                    x = x + 2;
+                }
+
                 break;
             case 1:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(RIGHT_IMAGES[2].getImage());
-                estado = 2;
-                x = x + 2;
+                if (moviendo) {
+                    setImage(RIGHT_IMAGES[2].getImage());
+                    estado = 2;
+                    x = x + 2;
+                }
+
                 break;
             case 2:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(RIGHT_IMAGES[3].getImage());
-                estado = 3;
-                x = x + 2;
+                if (moviendo) {
+                    setImage(RIGHT_IMAGES[3].getImage());
+                    estado = 3;
+                    x = x + 2;
+                }
+
                 break;
             case 3:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(RIGHT_IMAGES[4].getImage());
-                estado = 4;
-                x = x + 2;
+                if (moviendo) {
+                    setImage(RIGHT_IMAGES[4].getImage());
+                    estado = 4;
+                    x = x + 2;
+                }
+
                 break;
             case 4:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(RIGHT_IMAGES[0].getImage());
-                estado = 0;
-                x = x + 2;
+                if (moviendo) {
+                    setImage(RIGHT_IMAGES[0].getImage());
+                    estado = 0;
+                    x = x + 2;
+                }
+
                 break;
         }
     }
@@ -115,39 +128,54 @@ public class Player {
     public void cycleLeft() {
         switch (estado) {
             case 0:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(LEFT_IMAGES[1].getImage());
-                estado = 1;
-                x = x - 2;
+                if (moviendo) {
+                    setImage(LEFT_IMAGES[1].getImage());
+                    estado = 1;
+                    x = x - 2;
+                }
+
                 break;
             case 1:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(LEFT_IMAGES[2].getImage());
-                estado = 2;
-                x = x - 2;
+                if (moviendo) {
+                    setImage(LEFT_IMAGES[2].getImage());
+                    estado = 2;
+                    x = x - 2;
+                }
+
                 break;
             case 2:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(LEFT_IMAGES[3].getImage());
-                estado = 3;
-                x = x - 2;
+                if (moviendo) {
+                    setImage(LEFT_IMAGES[3].getImage());
+                    estado = 3;
+                    x = x - 2;
+                }
+
                 break;
             case 3:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(LEFT_IMAGES[4].getImage());
-                estado = 4;
-                x = x - 2;
+                if (moviendo) {
+                    setImage(LEFT_IMAGES[4].getImage());
+                    estado = 4;
+                    x = x - 2;
+                }
+
                 break;
             case 4:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(LEFT_IMAGES[0].getImage());
-                estado = 0;
-                x = x - 2;
+                if (moviendo) {
+                    setImage(LEFT_IMAGES[0].getImage());
+                    estado = 0;
+                    x = x - 2;
+                }
+
                 break;
         }
     }
@@ -155,38 +183,53 @@ public class Player {
     public void cycleUp() {
         switch (estado) {
             case 0:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(UP_IMAGES[1].getImage());
-                estado = 1;
-                y = y - 2;
+                if (moviendo) {
+                    setImage(UP_IMAGES[1].getImage());
+                    estado = 1;
+                    y = y - 2;
+                }
+
                 break;
             case 1:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(UP_IMAGES[2].getImage());
-                estado = 2;
-                y = y - 2;
+                if (moviendo) {
+                    setImage(UP_IMAGES[2].getImage());
+                    estado = 2;
+                    y = y - 2;
+                }
+
                 break;
             case 2:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(UP_IMAGES[3].getImage());
-                estado = 3;
-                y = y - 2;
+                if (moviendo) {
+                    setImage(UP_IMAGES[3].getImage());
+                    estado = 3;
+                    y = y - 2;
+                }
+
                 break;
             case 3:
-                evaluar.evaluar(direccion);
-                setImage(UP_IMAGES[4].getImage());
-                estado = 4;
-                y = y - 2;
+                moviendo = evaluar.evaluar(direccion);
+                if (moviendo) {
+                    setImage(UP_IMAGES[4].getImage());
+                    estado = 4;
+                    y = y - 2;
+                }
+
                 break;
             case 4:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(UP_IMAGES[0].getImage());
-                estado = 0;
-                y = y - 2;
+                if (moviendo) {
+                    setImage(UP_IMAGES[0].getImage());
+                    estado = 0;
+                    y = y - 2;
+                }
+
                 break;
         }
     }
@@ -194,39 +237,54 @@ public class Player {
     public void cycleDown() {
         switch (estado) {
             case 0:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(DOWN_IMAGES[1].getImage());
-                estado = 1;
-                y = y + 2;
+                if (moviendo) {
+                    setImage(DOWN_IMAGES[1].getImage());
+                    estado = 1;
+                    y = y + 2;
+                }
+
                 break;
             case 1:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(DOWN_IMAGES[2].getImage());
-                estado = 2;
-                y = y + 2;
+                if (moviendo) {
+                    setImage(DOWN_IMAGES[2].getImage());
+                    estado = 2;
+                    y = y + 2;
+                }
+
                 break;
             case 2:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(DOWN_IMAGES[3].getImage());
-                estado = 3;
-                y = y + 2;
+                if (moviendo) {
+                    setImage(DOWN_IMAGES[3].getImage());
+                    estado = 3;
+                    y = y + 2;
+                }
+
                 break;
             case 3:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(DOWN_IMAGES[4].getImage());
-                estado = 4;
-                y = y + 2;
+                if (moviendo) {
+                    setImage(DOWN_IMAGES[4].getImage());
+                    estado = 4;
+                    y = y + 2;
+                }
+
                 break;
             case 4:
-                evaluar.evaluar(direccion);
+                moviendo = evaluar.evaluar(direccion);
                 System.out.println(moviendo);
-                setImage(DOWN_IMAGES[0].getImage());
-                estado = 0;
-                y = y + 2;
+                if (moviendo) {
+                    setImage(DOWN_IMAGES[0].getImage());
+                    estado = 0;
+                    y = y + 2;
+                }
+
                 break;
         }
     }
@@ -281,10 +339,9 @@ public class Player {
     public void plantBomb() {
         int x2 = getX();
         int y2 = getY();
-     
 
         if (totalBombas > bombas.size()) {
-            Bomba bomba = new Bomba(x2,y2);
+            Bomba bomba = new Bomba(x2, y2);
             bombas.add(bomba);
             Bomba.allBombas.add(bomba);
         }

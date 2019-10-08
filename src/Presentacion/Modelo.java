@@ -1,6 +1,9 @@
 package Presentacion;
 
 import Logica.Bomba;
+import Logica.Enemigo;
+import static Logica.Enemigo.enemigos;
+import Logica.Fuego;
 import Logica.Imagenes;
 import Logica.Mapa;
 import Logica.Player;
@@ -11,6 +14,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -28,13 +32,21 @@ public class Modelo implements Runnable {
     private int contador;
     private char dmapa[][] = new char[15][15];
     private Imagenes imagenes;
+    private static CopyOnWriteArrayList<Enemigo> enemigos = new CopyOnWriteArrayList<Enemigo>();
 
     public Modelo() {
         player = Player.getSingletonInstance();
+        addEnemies();
         corriendo = true;
         contador = 0;
         dobleBuffer = new BufferedImage(getVentanaJuego().getLienzo().getWidth(), getVentanaJuego().getLienzo().getHeight(), BufferedImage.TYPE_INT_ARGB);
         hiloDibujo = new Thread(this);
+    }
+    
+     public void addEnemies() {
+        for (int i = 0; i < 2; i++) {
+            enemigos.add(new Enemigo(45, 45));
+        }
     }
 
     public VistaStart getVentanaJuego() {
@@ -120,9 +132,16 @@ public class Modelo implements Runnable {
         }
         lapiz.drawImage(player.getImagen(), player.getX(), player.getY(), lienzo);
         lapiz.drawRect(player.getX(), player.getY() + 10, 32, 30);
+        for (Enemigo enemigo : enemigos) {
+            lapiz.drawImage(enemigo.getImage(), enemigo.getX(), enemigo.getY(), lienzo);
+        }
         for (Bomba bomba : player.getBombas()) {
             lapiz.drawImage(bomba.getImagen(), bomba.getX(), bomba.getY(), lienzo);
         }
+        /*
+        for (Fuego f : Fuego.fuego) {
+            lapiz.drawImage(f.getImagen(), player.getX()+40, player.getY()+40, lienzo);
+        }*/
     }
 
     public VistaAyuda getVentanaAyuda() {

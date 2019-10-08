@@ -16,6 +16,40 @@ public class Imagenes {
     private ImageIcon[] DIE;
     private ImageIcon bombaG;
     private ImageIcon bombaP;
+    private ImageIcon fuegoArriba;
+    private ImageIcon fuegoAbajo;
+    private ImageIcon fuegoCentro;
+    private ImageIcon fuegoDerecha;
+    private ImageIcon fuegoIzquierda;
+    private ImageIcon enemigo;
+
+    public ImageIcon getEnemigo() {
+        ImageIcon pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/0.png"));
+        Image aux2 = pivot2.getImage();
+        Image tamaño2 = aux2.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        enemigo = new ImageIcon(tamaño2);
+        return enemigo;
+    }
+
+    public ImageIcon getFuegoArriba() {
+        return fuegoArriba;
+    }
+
+    public ImageIcon getFuegoAbajo() {
+        return fuegoAbajo;
+    }
+
+    public ImageIcon getFuegoCentro() {
+        return fuegoCentro;
+    }
+
+    public ImageIcon getFuegoDerecha() {
+        return fuegoDerecha;
+    }
+
+    public ImageIcon getFuegoIzquierda() {
+        return fuegoIzquierda;
+    }
 
     public ImageIcon getBombaG() {
         return bombaG;
@@ -25,6 +59,29 @@ public class Imagenes {
         return bombaP;
     }
 
+    public void crearFuego(){
+        ImageIcon pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/N5.gif"));
+        Image aux2 = pivot2.getImage();
+        Image tamaño2 = aux2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        fuegoArriba = new ImageIcon(tamaño2);
+        pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/S5.gif"));
+        aux2 = pivot2.getImage();
+        tamaño2 = aux2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        fuegoAbajo = new ImageIcon(tamaño2);
+        pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/C5.gif"));
+        aux2 = pivot2.getImage();
+        tamaño2 = aux2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        fuegoCentro = new ImageIcon(tamaño2);
+        pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/E5.gif"));
+        aux2 = pivot2.getImage();
+        tamaño2 = aux2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        fuegoDerecha = new ImageIcon(tamaño2);
+        pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/W5.gif"));
+        aux2 = pivot2.getImage();
+        tamaño2 = aux2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        fuegoIzquierda = new ImageIcon(tamaño2);
+    }
+    
     public void crearBombas() {
         ImageIcon pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/1.png"));
         Image aux2 = pivot2.getImage();
