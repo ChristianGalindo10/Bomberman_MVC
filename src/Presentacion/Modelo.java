@@ -1,13 +1,14 @@
 package Presentacion;
 
+import Logica.Add;
 import Logica.Bomba;
 import Logica.Enemigo;
-import static Logica.Enemigo.enemigos;
 import Logica.Fuego;
 import Logica.Imagenes;
 import Logica.Mapa;
 import Logica.Player;
 import Logica.Tipos;
+import Logica.Tipos.Movimiento;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -32,22 +33,18 @@ public class Modelo implements Runnable {
     private int contador;
     private char dmapa[][] = new char[15][15];
     private Imagenes imagenes;
-    private static CopyOnWriteArrayList<Enemigo> enemigos = new CopyOnWriteArrayList<Enemigo>();
+    private Add add;
 
     public Modelo() {
         player = Player.getSingletonInstance();
-        addEnemies();
+        add= new Add();
+        add.addEnemies();
         corriendo = true;
         contador = 0;
         dobleBuffer = new BufferedImage(getVentanaJuego().getLienzo().getWidth(), getVentanaJuego().getLienzo().getHeight(), BufferedImage.TYPE_INT_ARGB);
         hiloDibujo = new Thread(this);
     }
     
-     public void addEnemies() {
-        for (int i = 0; i < 2; i++) {
-            enemigos.add(new Enemigo(45, 45));
-        }
-    }
 
     public VistaStart getVentanaJuego() {
         if (ventanaJuego == null) {
@@ -132,12 +129,16 @@ public class Modelo implements Runnable {
         }
         lapiz.drawImage(player.getImagen(), player.getX(), player.getY(), lienzo);
         lapiz.drawRect(player.getX(), player.getY() + 10, 32, 30);
-        for (Enemigo enemigo : enemigos) {
+        for (Enemigo enemigo : add.getEnemigos()) {
             lapiz.drawImage(enemigo.getImage(), enemigo.getX(), enemigo.getY(), lienzo);
+            enemigo.move();
+            lapiz.drawRect(enemigo.getX(), enemigo.getY() , 30, 30);
         }
         for (Bomba bomba : player.getBombas()) {
             lapiz.drawImage(bomba.getImagen(), bomba.getX(), bomba.getY(), lienzo);
         }
+        
+        
         /*
         for (Fuego f : Fuego.fuego) {
             lapiz.drawImage(f.getImagen(), player.getX()+40, player.getY()+40, lienzo);
@@ -197,6 +198,7 @@ public class Modelo implements Runnable {
         player.cycleDown();
     }
 
+    
     public void stop() {
         player.Stop();
     }

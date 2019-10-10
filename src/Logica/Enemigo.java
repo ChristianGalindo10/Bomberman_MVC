@@ -6,14 +6,14 @@ import java.awt.Rectangle;
 import Logica.Tipos.Movimiento;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Enemigo implements Runnable {
+public class Enemigo{
      boolean vivo;
-    int velocidad = 1;
+    int velocidad = 2;
     Imagenes img2;
     Movimiento direction = randomDirection();
     private EvaluarMov evaluar;
-    public static CopyOnWriteArrayList<Enemigo> enemigos = new CopyOnWriteArrayList<Enemigo>();
-    Thread mover;
+    //public static CopyOnWriteArrayList<Enemigo> enemigos = new CopyOnWriteArrayList<Enemigo>();
+    //Thread mover;
 
     public void setX(int x) {
         this.x = x;
@@ -33,8 +33,6 @@ public class Enemigo implements Runnable {
         img2=new Imagenes();
         img=img2.getEnemigo().getImage();
         vivo = true;
-        mover = new Thread(this);
-        mover.start();
     }
 
     public Image getImg() {
@@ -62,7 +60,7 @@ public class Enemigo implements Runnable {
         if(direction == Movimiento.STOP) return;
         int r = 0 + (int) (Math.random() * ((25 - 0) + 1));
 
-        if (evaluar.evaluar(direction)) {
+        if (evaluar.evaluarE(direction,getBounds(direction))) {
             switch (direction) {
                 case UP:
                     this.setY(getY() - velocidad);
@@ -82,11 +80,12 @@ public class Enemigo implements Runnable {
         }
     }
     
+    /*
     public void addEnemies() {
         for (int i = 0; i < 5; i++) {
             enemigos.add(new Enemigo(550 + 5, 350 + 5));
         }
-    }
+    }*/
 
     private Movimiento randomDirection() {
         int r = 0 + (int) (Math.random() * ((3 - 0) + 1));
@@ -105,19 +104,19 @@ public class Enemigo implements Runnable {
         Rectangle rect = null;
         switch (move) {
             case UP:
-                rect = new Rectangle(getX(), getY() - velocidad, 30, 30);
+                rect = new Rectangle(getX(), getY() -velocidad, 30, 30);
                 break;
             case DOWN:
-                rect = new Rectangle(getX(), getY() + velocidad, 30, 30);
+                rect = new Rectangle(getX(), getY()+velocidad , 30, 30);
                 break;
             case LEFT:
-                rect = new Rectangle(getX() - velocidad, getY(), 30, 30);
+                rect = new Rectangle(getX()-velocidad , getY(), 30, 30);
                 break;
             case RIGHT:
-                rect = new Rectangle(getX() + velocidad, getY(), 30, 30);
+                rect = new Rectangle(getX()+velocidad , getY(), 30, 30);
                 break;
             case STOP:
-                rect = new Rectangle(getX(), getY(), 30, 40);
+                rect = new Rectangle(getX(), getY(), 30, 30);
                 break;
         }
         return rect;
@@ -147,10 +146,5 @@ public class Enemigo implements Runnable {
         BomberMan.enemigos.remove(this);
     }*/
 
-    @Override
-    public void run() {
-        while(vivo){
-            move();
-        }
-    }
+   
 }

@@ -57,12 +57,13 @@ public class Mapa {
                     }
                 }
             }
+            
             if (cant == 0) {
                 System.out.println("si entra");
                 break;
             }
         }
-
+        mapa[13][1]='p';
     }
 
     public void mostramapa() {

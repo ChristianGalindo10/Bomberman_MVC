@@ -45,13 +45,14 @@ public class ControladorS implements KeyListener {
         }
     }
 
+    
     @Override
     public void keyReleased(KeyEvent e) {
+        
         int key = e.getKeyCode();
         if (key != KeyEvent.VK_SPACE) {
             vistaStart.getModelostart().stop();
         }
-
     }
 
     public int getContador() {

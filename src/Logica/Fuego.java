@@ -26,7 +26,7 @@ public class Fuego implements Runnable{
     }
 
     
-    public Fuego(final Posicion _position, int dir) {
+    public Fuego( int dir) {
         //super(Tipos.TipoBloque.FUEGO, _position);
         img=new Imagenes();
         img.crearFuego();
@@ -54,6 +54,7 @@ public class Fuego implements Runnable{
         animacionFuego.start();
     }
 
+    /*
     public static void startFire(int w, int z) {
         int x = round(w);
         int y = round(z);
@@ -76,7 +77,7 @@ public class Fuego implements Runnable{
         //if (BomberMan.mapa.brickAtPosition(up) == 0) {
             new Fuego(up, 5);
         //}
-    }
+    }*/
     
     @Override
     public void run() {

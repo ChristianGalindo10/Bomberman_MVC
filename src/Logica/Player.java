@@ -52,6 +52,7 @@ public class Player {
         DIE = Img.getDIE();
         x = 40;
         y = 40;
+        setImage(DOWN_IMAGES[0].getImage());
     }
 
     public Image getImagen() {
@@ -289,6 +290,7 @@ public class Player {
         }
     }
 
+    
     public void Stop() {
         if (!vivo) {
             return;
@@ -308,6 +310,27 @@ public class Player {
                 break;
         }
         direccion = Movimiento.STOP;
+    }
+
+    public void DIE() {
+        if (vivo) {
+            vivo = false;
+
+            Thread animateDeathofPlayer = new Thread(new Runnable() {
+                public void run() {
+                    for (int c = 0; c < 5; c++) {
+                        try {
+                            setImage(DIE[c].getImage());
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            System.out.println("interrupted");
+                        }
+                    }
+                }
+            });
+            animateDeathofPlayer.start();
+        }
+
     }
 
     public Rectangle getBounds(Movimiento move) {
