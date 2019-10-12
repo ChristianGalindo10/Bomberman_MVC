@@ -68,7 +68,7 @@ public class Imagenes {
         aux2 = pivot2.getImage();
         tamaño2 = aux2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         fuegoAbajo = new ImageIcon(tamaño2);
-        pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/C5.gif"));
+        pivot2 = new ImageIcon(getClass().getResource("/IMAGENES/C4.gif"));
         aux2 = pivot2.getImage();
         tamaño2 = aux2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         fuegoCentro = new ImageIcon(tamaño2);

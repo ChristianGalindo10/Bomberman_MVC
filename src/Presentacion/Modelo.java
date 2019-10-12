@@ -127,22 +127,26 @@ public class Modelo implements Runnable {
                 }
             }
         }
-        lapiz.drawImage(player.getImagen(), player.getX(), player.getY(), lienzo);
-        lapiz.drawRect(player.getX(), player.getY() + 10, 32, 30);
+        
         for (Enemigo enemigo : add.getEnemigos()) {
             lapiz.drawImage(enemigo.getImage(), enemigo.getX(), enemigo.getY(), lienzo);
             enemigo.move();
             lapiz.drawRect(enemigo.getX(), enemigo.getY() , 30, 30);
         }
+        
+         lapiz.drawImage(player.getImagen(), player.getX(), player.getY(), lienzo);
+        lapiz.drawRect(player.getX(), player.getY() + 10, 32, 30);
+        
         for (Bomba bomba : player.getBombas()) {
             lapiz.drawImage(bomba.getImagen(), bomba.getX(), bomba.getY(), lienzo);
         }
         
         
-        /*
+       
         for (Fuego f : Fuego.fuego) {
-            lapiz.drawImage(f.getImagen(), player.getX()+40, player.getY()+40, lienzo);
-        }*/
+            lapiz.drawImage(f.getImagen(), f.getX(), f.getY(), lienzo);
+            lapiz.drawRect(f.getX(), f.getY() , 38, 38);
+        }
     }
 
     public VistaAyuda getVentanaAyuda() {

@@ -90,7 +90,7 @@ public class Bomba implements Runnable {
     
     public void explotar() {
         player.bombas.remove(0);
-        //Fuego.startFire(getX(),getY());
+        Fuego.startFire(getX(),getY());
     }
 
     public void parpadear() {

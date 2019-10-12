@@ -5,7 +5,9 @@
  */
 package Logica;
 
+import Logica.Tipos.Movimiento;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -20,14 +22,17 @@ public class Fuego implements Runnable{
     int direccion;
     Imagenes img;
     private Image imagen;
+    private int x;
+    private int y;
 
     public Image getImagen() {
         return imagen;
     }
 
     
-    public Fuego( int dir) {
-        //super(Tipos.TipoBloque.FUEGO, _position);
+    public Fuego( int x, int y, int dir) {
+        this.x=x;
+        this.y=y;
         img=new Imagenes();
         img.crearFuego();
         direccion = dir;
@@ -54,30 +59,38 @@ public class Fuego implements Runnable{
         animacionFuego.start();
     }
 
-    /*
+    
     public static void startFire(int w, int z) {
-        int x = round(w);
-        int y = round(z);
-        Fuego f = new Fuego(new Posicion(x, y), 1);
+        EvaluarMov evaluar;
+        evaluar = new EvaluarMov();
+        int x = w;
+        int y = z;
+         new Fuego(x,y,1);
         //right = 4
-        Posicion right = new Posicion(x + 50, y);
-        //if (BomberMan.mapa.brickAtPosition(right) == 0) {
-            new Fuego(right, 4);
-        //}
+        if (evaluar.evaluarBloque((x+40), y)) {
+            new Fuego(x+40,y, 4);
+        }
         //down = 2
-        Posicion down = new Posicion(x, y + 50);
-        //if (BomberMan.mapa.brickAtPosition(down) == 0) {
-            new Fuego(down, 2);
-        //}
-        Posicion left = new Posicion(x - 50, y);
-        //if (BomberMan.mapa.brickAtPosition(left) == 0) {
-            new Fuego(left, 3);
-        //}
-        Posicion up = new Posicion(x, y - 50);
-        //if (BomberMan.mapa.brickAtPosition(up) == 0) {
-            new Fuego(up, 5);
-        //}
-    }*/
+        if (evaluar.evaluarBloque(x, (y+40))) {
+            new Fuego(x,y+40, 2);
+        }
+        if (evaluar.evaluarBloque((x-40), y)) {
+            new Fuego(x-40,y, 3);
+        }
+        if (evaluar.evaluarBloque(x, (y-40))) {
+            new Fuego(x,y-40, 5);
+        }
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
+    
     
     @Override
     public void run() {
@@ -93,9 +106,9 @@ public class Fuego implements Runnable{
     }
     
      public static int round(int x) {
-        for (int i = 0; i < 1000; i = i + 50) {
+        for (int i = 0; i < 1000; i = i + 40) {
             if (x < i) {
-                x = i - 50;
+                x = i - 40;
                 break;
             }
         }

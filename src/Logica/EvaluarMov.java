@@ -37,13 +37,13 @@ public class EvaluarMov {
                 }
             }
         }
-
+        /*
         for (Enemigo enemigo : add.getEnemigos()) {
             if (player.getBounds(Movimiento.STOP).intersects(enemigo.getBounds(Movimiento.STOP))) {
                 System.out.println("DEAD");
                 player.DIE();
             }
-        }
+        }*/
 
         for (int i = 0; i < mapa2.length; i++) {
             for (int j = 0; j < mapa2.length; j++) {
@@ -52,25 +52,25 @@ public class EvaluarMov {
                         case UP:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
                                 System.out.println("bloque");
-                                return false;
+                                //return false;
                             }
                             break;
                         case DOWN:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
                                 System.out.println("bloque");
-                                return false;
+                                //return false;
                             }
                             break;
                         case RIGHT:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
                                 System.out.println("bloque");
-                                return false;
+                                //return false;
                             }
                             break;
                         case LEFT:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
                                 System.out.println("bloque");
-                                return false;
+                                //return false;
                             }
                             break;
                     }
@@ -87,6 +87,11 @@ public class EvaluarMov {
         mapa = Mapa.getSingletonInstance();
         mapa2 = mapa.getMapa();
 
+        for (Bomba b : player.bombas) {
+            if (b.getBounds().intersects(rect)) {
+                return false;
+            }
+        }
         for (int i = 0; i < mapa2.length; i++) {
             for (int j = 0; j < mapa2.length; j++) {
                 if (mapa2[i][j] == '1' || mapa2[i][j] == '2' || mapa2[i][j] == '*') {
@@ -128,5 +133,22 @@ public class EvaluarMov {
 
         return true;
 
+    }
+
+    public boolean evaluarBloque(int x, int y) {
+        Rectangle rect = null;
+        rect = new Rectangle(x, y , 40, 40);
+        for (int i = 0; i < mapa2.length; i++) {
+            for (int j = 0; j < mapa2.length; j++) {
+                if (mapa2[i][j] == '1' || mapa2[i][j] == '2' || mapa2[i][j] == '*') {
+                    System.out.println("HOLAAAAAAAA ");
+                    if (rect.intersects(new Rectangle(x, y, 40, 30))) {
+                       return false;
+                    }
+                    return false;
+                }
+            }
+        }    
+        return true;
     }
 }

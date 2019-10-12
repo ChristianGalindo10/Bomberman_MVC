@@ -105,11 +105,9 @@ public class Mapa {
     }
     
     /*
-    public int brickAtPosition(Posicion pos) {
-        int x = pos.getxPos();
-        int y = pos.getyPos();
-        x= round(x);
-        y=round(y);
+    public int brickAtPosition(int w, int z) {
+        int x = w;
+        int y = z;
         System.out.println("Rounderd off: " + x + " " + y);
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa.length; j++) {
@@ -122,9 +120,9 @@ public class Mapa {
     }*/
     
      public int round(int x) {
-        for (int i = 0; i < 1000; i = i + 50) {
+        for (int i = 0; i < 1000; i = i + 40) {
             if (x < i) {
-                x = i - 50;
+                x = i - 40;
                 break;
             }
         }

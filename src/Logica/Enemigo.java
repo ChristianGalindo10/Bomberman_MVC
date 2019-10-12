@@ -12,8 +12,6 @@ public class Enemigo{
     Imagenes img2;
     Movimiento direction = randomDirection();
     private EvaluarMov evaluar;
-    //public static CopyOnWriteArrayList<Enemigo> enemigos = new CopyOnWriteArrayList<Enemigo>();
-    //Thread mover;
 
     public void setX(int x) {
         this.x = x;
@@ -80,12 +78,7 @@ public class Enemigo{
         }
     }
     
-    /*
-    public void addEnemies() {
-        for (int i = 0; i < 5; i++) {
-            enemigos.add(new Enemigo(550 + 5, 350 + 5));
-        }
-    }*/
+    
 
     private Movimiento randomDirection() {
         int r = 0 + (int) (Math.random() * ((3 - 0) + 1));
@@ -104,7 +97,7 @@ public class Enemigo{
         Rectangle rect = null;
         switch (move) {
             case UP:
-                rect = new Rectangle(getX(), getY() -velocidad, 30, 30);
+                rect = new Rectangle(getX(), getY() -10, 30, 30);
                 break;
             case DOWN:
                 rect = new Rectangle(getX(), getY()+velocidad , 30, 30);

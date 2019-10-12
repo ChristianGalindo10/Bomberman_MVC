@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Player {
 
     ArrayList<Bomba> bombas = new ArrayList<Bomba>();
-    int totalBombas = 5;
+    int totalBombas = 1;
     private Imagenes Img;
     private ImageIcon[] UP_IMAGES;
     private ImageIcon[] DOWN_IMAGES;
