@@ -51,26 +51,26 @@ public class EvaluarMov {
                     switch (move) {
                         case UP:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
-                                //return false;
+                                //System.out.println("bloque");
+                                return false;
                             }
                             break;
                         case DOWN:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
-                                //return false;
+                                //System.out.println("bloque");
+                                return false;
                             }
                             break;
                         case RIGHT:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
-                                //return false;
+                                //System.out.println("bloque");
+                                return false;
                             }
                             break;
                         case LEFT:
                             if (player.getBounds(move).intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
-                                //return false;
+                                //System.out.println("bloque");
+                                return false;
                             }
                             break;
                     }
@@ -98,25 +98,25 @@ public class EvaluarMov {
                     switch (move) {
                         case UP:
                             if (rect.intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
+                                //System.out.println("bloque");
                                 return false;
                             }
                             break;
                         case DOWN:
                             if (rect.intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
+                                //System.out.println("bloque");
                                 return false;
                             }
                             break;
                         case RIGHT:
                             if (rect.intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
+                                //System.out.println("bloque");
                                 return false;
                             }
                             break;
                         case LEFT:
                             if (rect.intersects(new Rectangle(j * 40, i * 40, 40, 30))) {
-                                System.out.println("bloque");
+                                //System.out.println("bloque");
                                 return false;
                             }
                             break;
@@ -135,6 +135,7 @@ public class EvaluarMov {
 
     }
 
+    /*
     public boolean evaluarBloque(int x, int y) {
         Rectangle rect = null;
         rect = new Rectangle(x, y , 40, 40);
@@ -150,5 +151,5 @@ public class EvaluarMov {
             }
         }    
         return true;
-    }
+    }*/
 }

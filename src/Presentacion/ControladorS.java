@@ -24,22 +24,22 @@ public class ControladorS implements KeyListener {
         switch (key) {
             case KeyEvent.VK_LEFT:
                 vistaStart.getModelostart().movI();
-                System.out.println("LEFT");
+                //System.out.println("LEFT");
                 break;
             case KeyEvent.VK_RIGHT:
                 vistaStart.getModelostart().movR();
-                System.out.println("RIGHT");
+                //System.out.println("RIGHT");
                 break;
             case KeyEvent.VK_UP:
                 vistaStart.getModelostart().movU();
-                System.out.println("UP");
+                //System.out.println("UP");
                 break;
             case KeyEvent.VK_DOWN:
                 vistaStart.getModelostart().movD();
-                System.out.println("DOWN");
+                //System.out.println("DOWN");
                 break;
             case KeyEvent.VK_SPACE:
-                System.out.println("SPACE");
+                //System.out.println("SPACE");
                 vistaStart.getModelostart().plantBomb();
                 break;
         }

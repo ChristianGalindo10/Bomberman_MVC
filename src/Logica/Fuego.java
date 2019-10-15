@@ -30,9 +30,9 @@ public class Fuego implements Runnable{
     }
 
     
-    public Fuego( int x, int y, int dir) {
-        this.x=x;
-        this.y=y;
+    public Fuego( Posicion pos, int dir) {
+        this.x=pos.getxPos();
+        this.y=pos.getyPos();
         img=new Imagenes();
         img.crearFuego();
         direccion = dir;
@@ -61,24 +61,28 @@ public class Fuego implements Runnable{
 
     
     public static void startFire(int w, int z) {
-        EvaluarMov evaluar;
-        evaluar = new EvaluarMov();
+        Mapa mapa;
+        mapa = Mapa.getSingletonInstance();
         int x = w;
         int y = z;
-         new Fuego(x,y,1);
+        new Fuego(new Posicion(x,y),1);
         //right = 4
-        if (evaluar.evaluarBloque((x+40), y)) {
-            new Fuego(x+40,y, 4);
+        Posicion right = new Posicion(x + 40, y);
+        if (mapa.brickAtPosition(right)==0) {
+            new Fuego(right, 4);
         }
         //down = 2
-        if (evaluar.evaluarBloque(x, (y+40))) {
-            new Fuego(x,y+40, 2);
+         Posicion down = new Posicion(x, y+40);
+        if (mapa.brickAtPosition(down)==0) {
+            new Fuego(down, 2);
         }
-        if (evaluar.evaluarBloque((x-40), y)) {
-            new Fuego(x-40,y, 3);
+        Posicion left = new Posicion(x-40, y);
+        if (mapa.brickAtPosition(left)==0) {
+            new Fuego(left, 3);
         }
-        if (evaluar.evaluarBloque(x, (y-40))) {
-            new Fuego(x,y-40, 5);
+        Posicion up = new Posicion(x, y-40);
+        if (mapa.brickAtPosition(up)==0) {
+            new Fuego(up, 5);
         }
     }
 

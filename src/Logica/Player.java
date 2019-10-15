@@ -75,7 +75,6 @@ public class Player {
         switch (estado) {
             case 0:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(RIGHT_IMAGES[1].getImage());
                     estado = 1;
@@ -85,7 +84,6 @@ public class Player {
                 break;
             case 1:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(RIGHT_IMAGES[2].getImage());
                     estado = 2;
@@ -95,7 +93,6 @@ public class Player {
                 break;
             case 2:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(RIGHT_IMAGES[3].getImage());
                     estado = 3;
@@ -105,7 +102,6 @@ public class Player {
                 break;
             case 3:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(RIGHT_IMAGES[4].getImage());
                     estado = 4;
@@ -115,7 +111,6 @@ public class Player {
                 break;
             case 4:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(RIGHT_IMAGES[0].getImage());
                     estado = 0;
@@ -130,7 +125,6 @@ public class Player {
         switch (estado) {
             case 0:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(LEFT_IMAGES[1].getImage());
                     estado = 1;
@@ -140,7 +134,6 @@ public class Player {
                 break;
             case 1:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(LEFT_IMAGES[2].getImage());
                     estado = 2;
@@ -150,7 +143,6 @@ public class Player {
                 break;
             case 2:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(LEFT_IMAGES[3].getImage());
                     estado = 3;
@@ -160,7 +152,6 @@ public class Player {
                 break;
             case 3:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(LEFT_IMAGES[4].getImage());
                     estado = 4;
@@ -170,7 +161,6 @@ public class Player {
                 break;
             case 4:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(LEFT_IMAGES[0].getImage());
                     estado = 0;
@@ -185,7 +175,6 @@ public class Player {
         switch (estado) {
             case 0:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(UP_IMAGES[1].getImage());
                     estado = 1;
@@ -195,7 +184,6 @@ public class Player {
                 break;
             case 1:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(UP_IMAGES[2].getImage());
                     estado = 2;
@@ -205,7 +193,6 @@ public class Player {
                 break;
             case 2:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(UP_IMAGES[3].getImage());
                     estado = 3;
@@ -224,7 +211,6 @@ public class Player {
                 break;
             case 4:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(UP_IMAGES[0].getImage());
                     estado = 0;
@@ -239,7 +225,6 @@ public class Player {
         switch (estado) {
             case 0:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(DOWN_IMAGES[1].getImage());
                     estado = 1;
@@ -249,7 +234,6 @@ public class Player {
                 break;
             case 1:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(DOWN_IMAGES[2].getImage());
                     estado = 2;
@@ -259,7 +243,6 @@ public class Player {
                 break;
             case 2:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(DOWN_IMAGES[3].getImage());
                     estado = 3;
@@ -269,7 +252,6 @@ public class Player {
                 break;
             case 3:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(DOWN_IMAGES[4].getImage());
                     estado = 4;
@@ -279,7 +261,6 @@ public class Player {
                 break;
             case 4:
                 moviendo = evaluar.evaluar(direccion);
-                System.out.println(moviendo);
                 if (moviendo) {
                     setImage(DOWN_IMAGES[0].getImage());
                     estado = 0;
